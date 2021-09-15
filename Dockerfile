@@ -1,8 +1,8 @@
 FROM alpine:3
 
-COPY bin/build.sh .
+COPY ./build.sh .
 
-RUN apk add --no-cache bash git && \
+RUN apk add --no-cache bash && \
     bash build.sh && \
     rm build.sh && \
     apk del bash

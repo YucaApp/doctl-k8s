@@ -2,20 +2,14 @@
 
 set -eo pipefail
 
-DOCTL_CHECKSUM=ea22347e8a578f9e4ef11f61c225b820dbcd9893c835150cecf495c5f552ec5b
-DOCTL_VERSION=1.32.3
+DOCTL_CHECKSUM=914b3c9ea654327c4eb6aa9abdf19df1c115067ee8bce4e2309708d908a1885b
+DOCTL_VERSION=1.64.0
 
-HELM_2_CHECKSUM=7eebaaa2da4734242bbcdced62cc32ba8c7164a18792c8acdf16c77abffce202
-HELM_2_VERSION=2.16.1
+HELM_3_CHECKSUM=07c100849925623dc1913209cd1a30f0a9b80a5b4d6ff2153c609d11b043e262
+HELM_3_VERSION=3.6.3
 
-HELM_3_CHECKSUM=10e1fdcca263062b1d7b2cb93a924be1ef3dd6c381263d8151dd1a20a3d8c0dc
-HELM_3_VERSION=3.0.0
-
-KUBECTL_CHECKSUM=fccf152588edbaaa21ca94c67408b8754f8bc55e49470380e10cf987be27495a8411d019d807df2b2c1c7620f8535e8f237848c3c1ac3791b91da8df59dea5aa
-KUBECTL_VERSION=1.16.0
-
-SKAFFOLD_CHECKSUM=f2d876e60cfc0dfb0fc79263bc9900e9c08a8300bf1e4b2bbfef3f9936cc78e0
-SKAFFOLD_VERSION=0.40.0
+KUBECTL_CHECKSUM=a2ccab98460d80c9dcbc4c776e373c88e0921883da05610e17acf51e6f1c50a46891482cc62720647c1488e9e79986f61c90574a095a98a4e90806065089d5ef
+KUBECTL_VERSION=1.21.3
 
 setup() {
     mkdir /lib64
@@ -39,20 +33,6 @@ install_doctl() {
     chmod +x /usr/local/bin/doctl
 
     rm -rf doctl-${DOCTL_VERSION}-linux-amd64.tar.gz
-}
-
-install_helm_2() {
-    wget https://get.helm.sh/helm-v${HELM_2_VERSION}-linux-amd64.tar.gz
-
-    echo "${HELM_2_CHECKSUM}  helm-v${HELM_2_VERSION}-linux-amd64.tar.gz" > helm.checksum
-    sha256sum -c helm.checksum
-    rm helm.checksum
-
-    tar zxvf helm-v${HELM_2_VERSION}-linux-amd64.tar.gz
-    mv linux-amd64/helm /usr/local/bin/helm2
-    chmod +x /usr/local/bin/helm2
-    
-    rm -rf helm-v${HELM_2_VERSION}-linux-amd64.tar.gz linux-amd64
 }
 
 install_helm_3() {
@@ -83,21 +63,8 @@ install_kubectl() {
     rm -rf kubernetes-client-linux-amd64.tar.gz kubernetes
 }
 
-install_skaffold() {
-    wget https://github.com/GoogleContainerTools/skaffold/releases/download/v${SKAFFOLD_VERSION}/skaffold-linux-amd64
-
-    echo "${SKAFFOLD_CHECKSUM}  skaffold-linux-amd64" > skaffold.checksum
-    sha256sum -c skaffold.checksum
-    rm skaffold.checksum
-
-    mv skaffold-linux-amd64 /usr/local/bin/skaffold
-    chmod +x /usr/local/bin/skaffold
-}
-
 setup
 install_kubectl
-install_helm_2
 install_helm_3
 install_doctl
-install_skaffold
 teardown
