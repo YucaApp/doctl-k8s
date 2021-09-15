@@ -1,10 +1,10 @@
 # doctl-k8s
 
-> Thanks! The orginal version is from [doctl-kubectl](https://github.com/henry40408/doctl-kubectl).
+> Thanks for the orginal version from [doctl-kubectl](https://github.com/henry40408/doctl-kubectl).
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/yuca/doctl-k8s) ![Docker Stars](https://img.shields.io/docker/stars/yuca/doctl-k8s) 
 
-Docker image containing `kubectl`, `helm`, and `doctl`.
+Docker image containing `doctl` `kubectl`, and `helm`.
 
 ## Usage example
 
