@@ -4,7 +4,7 @@
 
 ![Docker Pulls](https://img.shields.io/docker/pulls/yuca/doctl-k8s) ![Docker Stars](https://img.shields.io/docker/stars/yuca/doctl-k8s) 
 
-Docker image containing `doctl` `kubectl`, and `helm`.
+Docker image containing `doctl`, `kubectl`, and `helm`.
 
 ## Usage example
 
